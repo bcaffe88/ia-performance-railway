@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1763148238366,
+      "tag": "0000_violet_cyclops",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1763148292401,
+      "tag": "0001_right_madelyne_pryor",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1763396164333,
+      "tag": "0002_sticky_clea",
+      "breakpoints": true
+    }
+  ]
+}
