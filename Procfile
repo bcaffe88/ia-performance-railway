@@ -1,1 +1,2 @@
-web: pnpm start
+web: pnpm db:push && pnpm start
+
