@@ -1,14 +1,14 @@
 import { useEffect } from "react";
-import { useLocation, useWouter } from "wouter";
-import { trpc } from "../../lib/trpc";
+import { useLocation } from "wouter";
+import { trpc } from "@/lib/trpc"; // ← MUDANÇA AQUI: use @ ao invés de ../../
 import { toast } from "sonner";
 
 export default function AuthCallback() {
-  const [location, setLocation] = useLocation();
-  const authMutation = trpc.system.auth.mutation();
+  const [, setLocation] = useLocation();
+  const authMutation = trpc.system.auth.useMutation();
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
+    const params = new URLSearchParams(window.location.search);
     const code = params.get("code");
 
     if (code) {
@@ -21,7 +21,7 @@ export default function AuthCallback() {
           },
           onError: (error) => {
             toast.error(`Erro de autenticação: ${error.message}`);
-            setLocation("/404"); // Redireciona para 404 ou página de erro
+            setLocation("/404");
           },
         }
       );
@@ -29,7 +29,7 @@ export default function AuthCallback() {
       toast.error("Código de autenticação não encontrado.");
       setLocation("/404");
     }
-  }, [location.search, setLocation, authMutation]);
+  }, [setLocation, authMutation]);
 
   return (
     <div className="min-h-screen flex items-center justify-center">
